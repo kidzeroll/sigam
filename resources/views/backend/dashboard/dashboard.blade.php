@@ -108,7 +108,7 @@
                 type: 'bar',
                 data: {
                     labels: [
-                        'Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Agt', 'Sep', 'Okt', 'Nov', 'Dec'
+                        'Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Agt', 'Sep', 'Okt', 'Nov', 'Des'
                     ],
                     datasets: [{
                             label: 'SKKM',
