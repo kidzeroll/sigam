@@ -3,8 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Models\Artikel;
+use App\Models\Galeri;
+use App\Models\Kelahiran;
+use App\Models\Kematian;
+use App\Models\Pendatang;
 use App\Models\Penduduk;
+use App\Models\Perpindahan;
 use App\Models\Surat;
+use App\Models\SuratKeluar;
+use App\Models\SuratMasuk;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -16,9 +24,20 @@ class DashboardController extends Controller
         $cowo = Penduduk::where('jenis_kelamin', '=', 'L')->count();
         $cewe = Penduduk::where('jenis_kelamin', '=', 'P')->count();
         $artikel = Artikel::count();
+        $user = User::count();
+        $foto = Galeri::count();
+
+        $kematian = Kematian::whereMonth('created_at', date('m'))->count();
+        $kelahiran = Kelahiran::whereMonth('created_at', date('m'))->count();
+        $pindah = Perpindahan::whereMonth('created_at', date('m'))->count();
+        $datang = Pendatang::whereMonth('created_at', date('m'))->count();
+
+        $suratMasuk = SuratMasuk::whereMonth('created_at', date('m'))->count();
+        $suratKeluar = SuratKeluar::whereMonth('created_at', date('m'))->count();
+
         $chart = $this->chart();
 
-        return view('backend.dashboard.dashboard', compact('penduduk', 'cowo', 'cewe', 'artikel', 'chart'));
+        return view('backend.dashboard.dashboard', compact('penduduk', 'cowo', 'cewe', 'artikel', 'chart', 'kematian', 'kelahiran', 'pindah', 'datang', 'suratMasuk', 'suratKeluar', 'foto', 'user'));
     }
 
     private function chart()
