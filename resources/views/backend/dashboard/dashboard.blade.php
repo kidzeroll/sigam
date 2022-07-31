@@ -112,49 +112,49 @@
                     ],
                     datasets: [{
                             label: 'SKKM',
-                            data: [1, 8, 7, 7, 0, 8, 4, 0, 2, 10, 7, 4],
+                            data: {{ json_encode($chart['SKKM']) }},
                             fill: true,
                             borderWidth: 1,
                             borderColor: 'red'
                         },
                         {
                             label: 'SKBM',
-                            data: [5, 4, 5, 0, 0, 1, 7, 0, 12, 10, 7, 5],
+                            data: {{ json_encode($chart['SKBM']) }},
                             fill: true,
                             borderWidth: 1,
                             borderColor: 'green'
                         },
                         {
                             label: 'SKBB',
-                            data: [1, 2, 3, 4, 0, 1, 7, 4, 9, 8, 2, 6],
+                            data: {{ json_encode($chart['SKBB']) }},
                             fill: true,
                             borderWidth: 1,
                             borderColor: 'blue'
                         },
                         {
                             label: 'SKP',
-                            data: [10, 9, 9, 3, 2, 0, 6, 3, 2, 1, 4, 4],
+                            data: {{ json_encode($chart['SKP']) }},
                             fill: true,
                             borderWidth: 1,
                             borderColor: 'yellow'
                         },
                         {
                             label: 'SKU',
-                            data: [2, 5, 7, 8, 1, 5, 9, 2, 1, 4, 5, 0],
+                            data: {{ json_encode($chart['SKU']) }},
                             fill: true,
                             borderWidth: 1,
                             borderColor: 'black'
                         },
                         {
                             label: 'SKD',
-                            data: [5, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
+                            data: {{ json_encode($chart['SKD']) }},
                             fill: true,
                             borderWidth: 1,
                             borderColor: 'brown'
                         },
                         {
                             label: 'SKK',
-                            data: [5, 1, 5, 6, 8, 1, 0, 4, 8, 0, 1, 2],
+                            data: {{ json_encode($chart['SKK']) }},
                             fill: true,
                             borderWidth: 1,
                             borderColor: 'silver'
