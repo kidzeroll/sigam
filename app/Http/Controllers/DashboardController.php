@@ -27,20 +27,20 @@ class DashboardController extends Controller
         $user = User::count();
         $foto = Galeri::count();
 
-        $kematian = Kematian::whereMonth('created_at', date('m'))->count();
-        $kelahiran = Kelahiran::whereMonth('created_at', date('m'))->count();
-        $pindah = Perpindahan::whereMonth('created_at', date('m'))->count();
-        $datang = Pendatang::whereMonth('created_at', date('m'))->count();
-
         $suratMasuk = SuratMasuk::whereMonth('created_at', date('m'))->count();
         $suratKeluar = SuratKeluar::whereMonth('created_at', date('m'))->count();
 
-        $chart = $this->chart();
+        $cKelahiran = $this->kelahiran();
+        $cKematian = $this->kematian();
+        $cPindah = $this->pindah();
+        $cDatang = $this->datang();
 
-        return view('backend.dashboard.dashboard', compact('penduduk', 'cowo', 'cewe', 'artikel', 'chart', 'kematian', 'kelahiran', 'pindah', 'datang', 'suratMasuk', 'suratKeluar', 'foto', 'user'));
+        $surat = $this->surat();
+
+        return view('backend.dashboard.dashboard', compact('penduduk', 'cowo', 'cewe', 'artikel', 'surat', 'suratMasuk', 'suratKeluar', 'foto', 'user', 'cKelahiran', 'cKematian', 'cPindah', 'cDatang'));
     }
 
-    private function chart()
+    private function surat()
     {
         $data = Surat::select(DB::raw('count(jenis_surat) as total'), 'jenis_surat', DB::raw('month(created_at) as bulan'))
             ->whereYear('created_at', date('Y'))
@@ -69,5 +69,93 @@ class DashboardController extends Controller
         $c['SKD'] = [$chart['SKD']['01'], $chart['SKD']['02'], $chart['SKD']['03'], $chart['SKD']['04'], $chart['SKD']['05'], $chart['SKD']['06'], $chart['SKD']['07'], $chart['SKD']['08'], $chart['SKD']['09'], $chart['SKD']['10'], $chart['SKD']['11'], $chart['SKD']['12']];
 
         return $c;
+    }
+
+    public function kelahiran()
+    {
+        $data = Kelahiran::select(DB::raw('count(*) as total'), DB::raw('month(created_at) as bulan'))
+            ->whereYear('created_at', date('Y'))
+            ->groupBy('bulan')
+            ->get();
+
+        foreach ($data as $v) {
+            $chart[sprintf('%02d', $v->bulan)] = $v->total;
+        }
+
+        for ($i = 1; $i <= 12; $i++) {
+            if (isset($chart[sprintf('%02d', $i)])) {
+                $c[$i] = $chart[sprintf('%02d', $i)];
+            } else {
+                $c[$i] = 0;
+            }
+        }
+
+        return array_values($c);
+    }
+
+    public function kematian()
+    {
+        $data = Kematian::select(DB::raw('count(*) as total'), DB::raw('month(created_at) as bulan'))
+            ->whereYear('created_at', date('Y'))
+            ->groupBy('bulan')
+            ->get();
+
+        foreach ($data as $v) {
+            $chart[sprintf('%02d', $v->bulan)] = $v->total;
+        }
+
+        for ($i = 1; $i <= 12; $i++) {
+            if (isset($chart[sprintf('%02d', $i)])) {
+                $c[$i] = $chart[sprintf('%02d', $i)];
+            } else {
+                $c[$i] = 0;
+            }
+        }
+
+        return array_values($c);
+    }
+
+    public function pindah()
+    {
+        $data = Perpindahan::select(DB::raw('count(*) as total'), DB::raw('month(created_at) as bulan'))
+            ->whereYear('created_at', date('Y'))
+            ->groupBy('bulan')
+            ->get();
+
+        foreach ($data as $v) {
+            $chart[sprintf('%02d', $v->bulan)] = $v->total;
+        }
+
+        for ($i = 1; $i <= 12; $i++) {
+            if (isset($chart[sprintf('%02d', $i)])) {
+                $c[$i] = $chart[sprintf('%02d', $i)];
+            } else {
+                $c[$i] = 0;
+            }
+        }
+
+        return array_values($c);
+    }
+
+    public function datang()
+    {
+        $data = Pendatang::select(DB::raw('count(*) as total'), DB::raw('month(created_at) as bulan'))
+            ->whereYear('created_at', date('Y'))
+            ->groupBy('bulan')
+            ->get();
+
+        foreach ($data as $v) {
+            $chart[sprintf('%02d', $v->bulan)] = $v->total;
+        }
+
+        for ($i = 1; $i <= 12; $i++) {
+            if (isset($chart[sprintf('%02d', $i)])) {
+                $c[$i] = $chart[sprintf('%02d', $i)];
+            } else {
+                $c[$i] = 0;
+            }
+        }
+
+        return array_values($c);
     }
 }
