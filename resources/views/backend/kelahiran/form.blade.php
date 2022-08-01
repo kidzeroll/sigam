@@ -69,19 +69,6 @@
         <textarea class="form-control @error('keterangan') is-invalid @enderror" name="keterangan" id="keterangan">{{ old('keterangan', $model->keterangan) }}</textarea>
     </div>
 
-    <!-- status -->
-    <div class="form-group col-12">
-        <label for="status">Status</label>
-        <select class="form-control select2 @error('status') is-invalid @enderror" id="status" name="status"
-            style="width: 100%">
-            <option disabled selected>Pilih</option>
-            <option value="lahir" {{ old('status', $model->status) == 'lahir' ? 'selected' : '' }}>Lahir
-            </option>
-            <option value="meninggal" {{ old('status', $model->status) == 'meninggal' ? 'selected' : '' }}>Meninggal
-            </option>
-        </select>
-    </div>
-
 </div>
 
 

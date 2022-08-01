@@ -29,7 +29,6 @@ class KelahiranController extends Controller
             'tempat_lahir' => 'required',
             'nama_ayah' => 'nullable|string|min:3|max:255',
             'nama_ibu' => 'nullable|string|min:3|max:255',
-            'status' => 'required',
             'keterangan' => 'nullable',
         ]);
 
@@ -41,7 +40,6 @@ class KelahiranController extends Controller
         $kelahiran->tempat_lahir = $request->tempat_lahir;
         $kelahiran->nama_ayah = $request->nama_ayah;
         $kelahiran->nama_ibu = $request->nama_ibu;
-        $kelahiran->status = $request->status;
         $kelahiran->keterangan = $request->keterangan;
         $kelahiran->save();
 
@@ -69,7 +67,6 @@ class KelahiranController extends Controller
             'tempat_lahir' => 'required',
             'nama_ayah' => 'nullable|string|min:3|max:255',
             'nama_ibu' => 'nullable|string|min:3|max:255',
-            'status' => 'required',
             'keterangan' => 'nullable',
         ]);
 
@@ -81,7 +78,6 @@ class KelahiranController extends Controller
         $kelahiran->tempat_lahir = $request->tempat_lahir;
         $kelahiran->nama_ayah = $request->nama_ayah;
         $kelahiran->nama_ibu = $request->nama_ibu;
-        $kelahiran->status = $request->status;
         $kelahiran->keterangan = $request->keterangan;
         $kelahiran->save();
 

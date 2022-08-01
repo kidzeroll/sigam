@@ -21,7 +21,6 @@ class KelahiranSeeder extends Seeder
                 'nama_ayah' => $faker->name(),
                 'nama_ibu' => $faker->name(),
                 'keterangan' => '-',
-                'status' => $faker->randomElement(['lahir', 'meninggal']),
             ]);
         }
     }

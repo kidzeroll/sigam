@@ -17,7 +17,6 @@ return new class extends Migration
             $table->string('nama_ayah')->nullable();
             $table->string('nama_ibu')->nullable();
             $table->text('keterangan')->nullable();
-            $table->enum('status', ['lahir', 'meninggal'])->default('lahir');
             $table->timestamps();
         });
     }
