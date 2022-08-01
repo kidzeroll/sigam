@@ -35,7 +35,7 @@
                     </p>
 
                     <p class="align-justify mt-3">
-                    <h5 class="text-bold">Kgiatan</h5>
+                    <h5 class="text-bold">Kegiatan</h5>
                     Masyarakat Gampong {{ $gampong->nama_gampong }} setiap tahunnya melakukan kegiatan berupa : <br>
                     - Gotong Royong menjelang Bulan Ramadhan <br>
                     - Malaksanakan Qurban Kelompok <br>
@@ -46,15 +46,20 @@
                     <hr class="bg-primary mt-5">
 
                     <div class="testimonials">
-                        <h5 class="text-center">Perangkat Gampong</h5>
+                        <u>
+                            <b>
+                                <h3 class="text-center">Perangkat Gampong</h5>
+                            </b>
+                        </u>
 
-                        <div class="testimonials-carousel swiper">
+                        <div class="testimonials-carousel swiper mt-5">
                             <div class="swiper-wrapper">
 
                                 @foreach ($perangkats as $perangkat)
                                     <div class="testimonial-item swiper-slide">
                                         <img src="{{ asset('storage/' . $perangkat->photo_path) }}"
-                                            class="testimonial-img" alt="">
+                                            class="testimonial-img" alt=""
+                                            style="width: 200px; height: 200px; overflow: hidden;">
                                         <h3>{{ $perangkat->nama }}</h3>
                                         <h4>{{ $perangkat->jabatan }}</h4>
                                         <p>

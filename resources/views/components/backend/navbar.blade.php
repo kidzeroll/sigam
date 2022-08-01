@@ -23,7 +23,7 @@
 
                    @if (auth()->user()->photo_path)
                        <img alt="image" src="{{ asset('storage/' . auth()->user()->photo_path) }}"
-                           class="user-img-radious-style">
+                           class="user-img-radious-style" width="100%" height="100%">
                        <span class="d-sm-none d-lg-inline-block"></span>
                    @else
                        <img alt="image" src="{{ asset('backend/assets/img/user.png') }}"

@@ -12,7 +12,7 @@
 
                         @if (auth()->user()->photo_path)
                             <img alt="image" src="{{ asset('storage/' . auth()->user()->photo_path) }}"
-                                class="rounded-circle author-box-picture">
+                                class="rounded-circle author-box-picture" height="90px" width="90px">
                         @endif
                         @if (!auth()->user()->photo_path)
                             <img alt="image" src="{{ asset('backend/assets/img/users/user-1.png') }}"
