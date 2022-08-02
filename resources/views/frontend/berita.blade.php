@@ -1,12 +1,31 @@
 <x-frontend-layout>
     <x-slot name="title">Berita</x-slot>
 
+    @push('style')
+        <style>
+            @media screen and (max-width: 520px) {
+
+                li.page-item {
+
+                    display: none;
+                }
+
+                .page-item:first-child,
+                .page-item:last-child,
+                .page-item.active {
+
+                    display: block;
+                }
+            }
+        </style>
+    @endpush
+
     <section id="blog" class="blog">
         <div class="container" data-aos="fade-up">
 
             <div class="row">
 
-                <div class="col-lg-8 entries">
+                <div class="col-md-8 col-12 entries">
 
                     @foreach ($artikels as $artikel)
                         <article class="entry">
@@ -48,14 +67,14 @@
                         </article>
                     @endforeach
 
-                    <div class="blog-pagination">
+                    <div class="blog-pagination col-12 mb-3">
                         {{ $artikels->links() }}
                     </div>
 
                 </div>
 
                 <!--sidebar-->
-                <div class="col-lg-4">
+                <div class="col-md-4 col-12">
 
                     <div class="sidebar">
                         <h3 class="sidebar-title">Cari Berita</h3>

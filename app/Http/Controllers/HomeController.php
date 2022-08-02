@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Agama;
 use App\Models\Artikel;
+use App\Models\Dusun;
 use App\Models\Galeri;
 use App\Models\Kategori;
+use App\Models\Pekerjaan;
+use App\Models\Penduduk;
 use App\Models\PerangkatGampong;
 use Illuminate\Http\Request;
 
@@ -60,5 +64,62 @@ class HomeController extends Controller
         $artikels = $kategori->artikel()->latest()->paginate(10);
         // dd($artikels);
         return view('frontend.berita-kategori', compact('kategori', 'kategoris', 'perangkats', 'artikels'));
+    }
+
+    public function profil()
+    {
+        $perangkats = PerangkatGampong::all('nama', 'photo_path', 'jabatan', 'alamat');
+        $total = Penduduk::count();
+        $dusuns = Dusun::all('nama');
+        return view('frontend.profil', compact('perangkats', 'total', 'dusuns'));
+    }
+
+    public function skkm()
+    {
+        $agamas = Agama::all('id', 'nama');
+        $pekerjaans = Pekerjaan::all('id', 'nama');
+        return view('frontend.skkm', compact('agamas', 'pekerjaans'));
+    }
+
+    public function skbb()
+    {
+        $agamas = Agama::all('id', 'nama');
+        $pekerjaans = Pekerjaan::all('id', 'nama');
+        return view('frontend.skbb', compact('agamas', 'pekerjaans'));
+    }
+
+    public function skbm()
+    {
+        $agamas = Agama::all('id', 'nama');
+        $pekerjaans = Pekerjaan::all('id', 'nama');
+        return view('frontend.skbm', compact('agamas', 'pekerjaans'));
+    }
+
+    public function skp()
+    {
+        $agamas = Agama::all('id', 'nama');
+        $pekerjaans = Pekerjaan::all('id', 'nama');
+        return view('frontend.skp', compact('agamas', 'pekerjaans'));
+    }
+
+    public function sku()
+    {
+        $agamas = Agama::all('id', 'nama');
+        $pekerjaans = Pekerjaan::all('id', 'nama');
+        return view('frontend.sku', compact('agamas', 'pekerjaans'));
+    }
+
+    public function skd()
+    {
+        $agamas = Agama::all('id', 'nama');
+        $pekerjaans = Pekerjaan::all('id', 'nama');
+        return view('frontend.skd', compact('agamas', 'pekerjaans'));
+    }
+
+    public function skk()
+    {
+        $agamas = Agama::all('id', 'nama');
+        $pekerjaans = Pekerjaan::all('id', 'nama');
+        return view('frontend.skk', compact('agamas', 'pekerjaans'));
     }
 }

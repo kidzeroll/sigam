@@ -27,25 +27,16 @@ use App\Http\Controllers\{
     SuratMasukController,
     UserController,
 };
-use App\Models\{
-    Agama,
-    Dusun,
-    Pekerjaan,
-    Penduduk,
-    PerangkatGampong,
-};
 use Illuminate\Support\Facades\Route;
+// login
+Route::get('/login', [AuthController::class, 'index'])->name('login');
+Route::post('/login', [AuthController::class, 'login'])->name('login.action');
 
 // home
 Route::get('/', HomeController::class)->name('home');
 
 // frontend profil
-Route::get('/profil-gampong', function () {
-    $perangkats = PerangkatGampong::all('nama', 'photo_path', 'jabatan', 'alamat');
-    $total = Penduduk::count();
-    $dusuns = Dusun::all('nama');
-    return view('frontend.profil', compact('perangkats', 'total', 'dusuns'));
-})->name('frontend.profil');
+Route::get('/profil-gampong', [HomeController::class, 'profil'])->name('frontend.profil');
 
 // frontend berita
 Route::get('/berita', [HomeController::class, 'berita'])->name('berita');
@@ -54,11 +45,6 @@ Route::get('/kategori-berita/{slug}', [HomeController::class, 'kategori'])->name
 
 // frontend foto
 Route::get('/foto', [HomeController::class, 'foto'])->name('foto');
-
-
-// login
-Route::get('/login', [AuthController::class, 'index'])->name('login');
-Route::post('/login', [AuthController::class, 'login'])->name('login.action');
 
 // pengaduan
 Route::get('/pengaduan/create', [PengaduanController::class, 'create'])->name('pengaduan.create');
@@ -70,55 +56,29 @@ Route::prefix('administrasi-surat')->group(
         Route::post('/store', [SuratController::class, 'FrontendStore'])->name('administrasi.store');
 
         // skkm
-        Route::get('skkm', function () {
-            $agamas = Agama::all('id', 'nama');
-            $pekerjaans = Pekerjaan::all('id', 'nama');
-            return view('frontend.skkm', compact('agamas', 'pekerjaans'));
-        })->name('skkm');
+        Route::get('skkm', [HomeController::class, 'skkm'])->name('skkm');
 
         // skbb
-        Route::get('skbb', function () {
-            $agamas = Agama::all('id', 'nama');
-            $pekerjaans = Pekerjaan::all('id', 'nama');
-            return view('frontend.skbb', compact('agamas', 'pekerjaans'));
-        })->name('skbb');
+        Route::get('skbb', [HomeController::class, 'skbb'])->name('skbb');
 
         // skbm
-        Route::get('skbm', function () {
-            $agamas = Agama::all('id', 'nama');
-            $pekerjaans = Pekerjaan::all('id', 'nama');
-            return view('frontend.skbm', compact('agamas', 'pekerjaans'));
-        })->name('skbm');
+        Route::get('skbm', [HomeController::class, 'skbm'])->name('skbm');
 
         // skp
-        Route::get('skp', function () {
-            $agamas = Agama::all('id', 'nama');
-            $pekerjaans = Pekerjaan::all('id', 'nama');
-            return view('frontend.skp', compact('agamas', 'pekerjaans'));
-        })->name('skp');
+        Route::get('skp', [HomeController::class, 'skp'])->name('skp');
 
         // sku
-        Route::get('sku', function () {
-            $agamas = Agama::all('id', 'nama');
-            $pekerjaans = Pekerjaan::all('id', 'nama');
-            return view('frontend.sku', compact('agamas', 'pekerjaans'));
-        })->name('sku');
+        Route::get('sku', [HomeController::class, 'sku'])->name('sku');
 
         // skd
-        Route::get('skd', function () {
-            $agamas = Agama::all('id', 'nama');
-            $pekerjaans = Pekerjaan::all('id', 'nama');
-            return view('frontend.skd', compact('agamas', 'pekerjaans'));
-        })->name('skd');
+        Route::get('skd', [HomeController::class, 'skd'])->name('skd');
 
         // skk
-        Route::get('skk', function () {
-            $agamas = Agama::all('id', 'nama');
-            $pekerjaans = Pekerjaan::all('id', 'nama');
-            return view('frontend.skk', compact('agamas', 'pekerjaans'));
-        })->name('skk');
+        Route::get('skk', [HomeController::class, 'skk'])->name('skk');
     }
 );
+
+
 
 
 // auth

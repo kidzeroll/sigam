@@ -1,6 +1,24 @@
 <x-frontend-layout>
     <x-slot name="title">Galeri Foto</x-slot>
 
+    @push('style')
+        <style>
+            @media screen and (max-width: 520px) {
+
+                li.page-item {
+
+                    display: none;
+                }
+
+                .page-item:first-child,
+                .page-item:last-child,
+                .page-item.active {
+
+                    display: block;
+                }
+            }
+        </style>
+    @endpush
 
     <section class="portfolio">
         <div class="container">
@@ -27,7 +45,7 @@
                 </div>
 
                 <!--sidebar-->
-                <div class="col-md-2">
+                <div class="col-md-2 col-12">
                     <div class="row" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-duration="500">
 
                         <div class="sidebar shadow p-3">
