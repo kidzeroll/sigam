@@ -28,6 +28,7 @@ use App\Http\Controllers\{
     UserController,
 };
 use Illuminate\Support\Facades\Route;
+
 // login
 Route::get('/login', [AuthController::class, 'index'])->name('login');
 Route::post('/login', [AuthController::class, 'login'])->name('login.action');
@@ -50,7 +51,7 @@ Route::get('/foto', [HomeController::class, 'foto'])->name('foto');
 Route::get('/pengaduan/create', [PengaduanController::class, 'create'])->name('pengaduan.create');
 Route::post('/pengaduan', [PengaduanController::class, 'store'])->name('pengaduan.store');
 
-// surat
+// administrasi surat
 Route::prefix('administrasi-surat')->group(
     function () {
         Route::post('/store', [SuratController::class, 'FrontendStore'])->name('administrasi.store');
