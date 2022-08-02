@@ -57,7 +57,7 @@
         <div style="margin-top: 20px" class="text-center">
             <b style="text-decoration: underline;">SURAT KETERANGAN KURANG MAMPU</b>
             <br>
-            Nomor : {{ $no }}/{{ $gampong->kode_gampong }}/{{ $bln }}/{{ date('Y') }}
+            Nomor : {{ $no }}/{{ $gampong->kode_gampong }}-SKKM/{{ $bln }}/{{ date('Y') }}
         </div>
 
         <!--menerangkan-->

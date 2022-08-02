@@ -47,6 +47,15 @@ Route::get('/profil-gampong', function () {
     return view('frontend.profil', compact('perangkats', 'total', 'dusuns'));
 })->name('frontend.profil');
 
+// frontend berita
+Route::get('/berita', [HomeController::class, 'berita'])->name('berita');
+Route::get('/berita/{slug}', [HomeController::class, 'showBerita'])->name('berita.show');
+Route::get('/kategori-berita/{slug}', [HomeController::class, 'kategori'])->name('kategori');
+
+// frontend foto
+Route::get('/foto', [HomeController::class, 'foto'])->name('foto');
+
+
 // login
 Route::get('/login', [AuthController::class, 'index'])->name('login');
 Route::post('/login', [AuthController::class, 'login'])->name('login.action');

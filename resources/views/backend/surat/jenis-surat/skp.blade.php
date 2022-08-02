@@ -57,7 +57,7 @@
         <div style="margin-top: 20px" class="text-center">
             <b style="text-decoration: underline;">SURAT KETERANGAN PINDAH</b>
             <br>
-            Nomor : {{ $no }}/{{ $gampong->kode_gampong }}/{{ $bln }}/{{ date('Y') }}
+            Nomor : {{ $no }}/{{ $gampong->kode_gampong }}-SKP/{{ $bln }}/{{ date('Y') }}
         </div>
 
         <!--menerangkan-->

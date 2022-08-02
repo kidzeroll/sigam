@@ -99,7 +99,7 @@ class SuratController extends Controller
 
 
         $data = Surat::where('id', '=', $surat->id)->first();
-        $no = sprintf('%04s', abs($data->no_surat + 1));
+        $no = sprintf('%03s', abs($data->no_surat + 1));
 
         $array_bln    = array(1 => "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XI", "XII");
         $bln      = $array_bln[date('n')];
@@ -241,7 +241,7 @@ class SuratController extends Controller
 
 
         $data = Surat::where('id', '=', $surat->id)->first();
-        $no = sprintf('%04s', abs($data->no_surat + 1));
+        $no = sprintf('%03s', abs($data->no_surat + 1));
 
         $array_bln    = array(1 => "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XI", "XII");
         $bln      = $array_bln[date('n')];

@@ -1,16 +1,19 @@
 <x-frontend-layout>
     <x-slot name="title">Profil Gampong</x-slot>
 
-
-    <section class="profil" id="profil" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-duration="500">
+    <section class="why-us section-bg" data-aos="fade-up" date-aos-delay="200" id="profilGampong">
         <div class="container">
-            <div class="card shadow">
-                <div class="card-header">
-                    <h5>Profil Gampong</h5>
-                </div>
-                <div class="card-body">
+            <div class="row">
+
+                <div class="col-12 d-flex flex-column justify-content-center p-5">
+
+                    <div class="section-title">
+                        <h2>Profil Gampong</h2>
+                    </div>
+
                     <p class="align-justify">
-                        Gampong {{ $gampong->nama_gampong }} dipimpin oleh <b>{{ $gampong->nama_keuchik }}</b> merupakan
+                        Gampong {{ $gampong->nama_gampong }} dipimpin oleh <b>{{ $gampong->nama_keuchik }}</b>
+                        merupakan
                         salah satu gampong yang berada di Kecamatan {{ $gampong->nama_kecamatan }} Kabupaten
                         {{ $gampong->nama_kabupaten }} Provinsi {{ $gampong->nama_provinsi }} dengan jumlah penduduk
                         sebanyak <b>{{ $total }}</b> Orang yang rata-rata mata pencahariannya berupa Petani,
@@ -42,17 +45,24 @@
                     - Malaksanakan Kenduri Maulid Nabi Muhammad saw <br>
                     - Malaksanakan Kenduri Buka Puasa Bersama
                     </p>
+                </div>
+            </div>
 
-                    <hr class="bg-primary mt-5">
+            <div class="row">
+
+                <div class="col-12 d-flex flex-column justify-content-center p-5">
+
+                    <div class="section-title">
+                        <h2>Perangkat Gampong</h2>
+                        <p>
+                            Berikut adalah daftar perangkat gampong yang ada di Gampong
+                            {{ $gampong->nama_gampong }}.
+                        </p>
+                    </div>
 
                     <div class="testimonials">
-                        <u>
-                            <b>
-                                <h3 class="text-center">Perangkat Gampong</h5>
-                            </b>
-                        </u>
 
-                        <div class="testimonials-carousel swiper mt-5">
+                        <div class="testimonials-carousel swiper mt-3">
                             <div class="swiper-wrapper">
 
                                 @foreach ($perangkats as $perangkat)
@@ -72,9 +82,13 @@
                             </div>
                             <div class="swiper-pagination"></div>
                         </div>
+
+
                     </div>
                 </div>
+
             </div>
+
         </div>
     </section>
 

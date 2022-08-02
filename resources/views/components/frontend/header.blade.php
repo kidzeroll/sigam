@@ -13,14 +13,20 @@
                 </li>
 
                 <!--berita-->
-                <li><a href="#">Berita</a></li>
+                <li>
+                    <a class="{{ request()->is('berita*') ? 'active' : '' }} {{ request()->is('kategori-berita*') ? 'active' : '' }}"
+                        href="{{ route('berita') }}">Berita</a>
+                </li>
 
                 <!--galeri-->
-                <li><a href="#">Galeri Foto</a></li>
+                <li>
+                    <a class="{{ request()->is('foto*') ? 'active' : '' }}" href="{{ route('foto') }}">Galeri Foto</a>
+                </li>
 
                 <!--profil gampong-->
                 <li>
-                    <a href="{{ route('frontend.profil') }}">Profil Gampong</a>
+                    <a class="{{ request()->is('profil-gampong*') ? 'active' : '' }}"
+                        href="{{ route('frontend.profil') }}">Profil Gampong</a>
                 </li>
 
                 <!--pengaduan-->

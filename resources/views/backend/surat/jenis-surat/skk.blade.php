@@ -57,7 +57,7 @@
         <div class="text-center">
             <b style="text-decoration: underline;">SURAT KETERANGAN KEMATIAN</b>
             <br>
-            Nomor : {{ $no }}/{{ $gampong->kode_gampong }}/{{ $bln }}/{{ date('Y') }}
+            Nomor : {{ $no }}/{{ $gampong->kode_gampong }}-SKK/{{ $bln }}/{{ date('Y') }}
         </div>
 
         <!--menerangkan-->
