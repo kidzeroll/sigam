@@ -25,7 +25,14 @@ class HomeController extends Controller
     {
         $kategoris = Kategori::all();
         $perangkats = PerangkatGampong::all('nama', 'jabatan', 'photo_path');
-        $artikels = Artikel::latest()->paginate(10);
+
+        if (request('search')) {
+            $artikels = Artikel::where('judul', 'like', '%' . request('search') . '%')
+                ->orWhere('isi', 'like', '%' . request('search') . '%')
+                ->paginate(10);
+        } else {
+            $artikels = Artikel::latest()->paginate(10);
+        }
         return view('frontend.berita', compact('kategoris', 'artikels', 'perangkats'));
     }
 

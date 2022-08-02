@@ -79,8 +79,8 @@
                     <div class="sidebar">
                         <h3 class="sidebar-title">Cari Berita</h3>
                         <div class="sidebar-item search-form">
-                            <form action="">
-                                <input type="text">
+                            <form action="{{ route('berita') }}">
+                                <input type="text" name="search" id="search">
                                 <button type="submit"><i class="bi bi-search"></i></button>
                             </form>
                         </div>
