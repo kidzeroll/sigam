@@ -44,17 +44,14 @@ class SuratController extends Controller
             'keperluan' => 'required',
             'no_hp' => 'required',
             'status' => 'nullable',
-
             'tanggal_meninggal' => 'nullable',
             'tanggal_dikebumikan' => 'nullable',
             'tempat_dikebumikan' => 'nullable',
             'pukul_meninggal' => 'nullable',
             'pukul_dikebumikan' => 'nullable',
             'penyebab' => 'nullable',
-
             'tujuan_pindah' => 'nullable',
             'tanggal_pindah' => 'nullable',
-
             'bidang_usaha' => 'nullable',
             'alamat_usaha' => 'nullable',
         ]);
@@ -80,20 +77,16 @@ class SuratController extends Controller
         $surat->alamat = $request->alamat;
         $surat->keperluan = $request->keperluan;
         $surat->no_hp = $request->no_hp;
-
         $surat->tanggal_meninggal = $request->tanggal_meninggal;
         $surat->tanggal_dikebumikan = $request->tanggal_dikebumikan;
         $surat->tempat_dikebumikan = $request->tempat_dikebumikan;
         $surat->pukul_meninggal = $request->pukul_meninggal;
         $surat->pukul_dikebumikan = $request->pukul_dikebumikan;
         $surat->penyebab = $request->penyebab;
-
         $surat->tujuan_pindah = $request->tujuan_pindah;
         $surat->tanggal_pindah = $request->tanggal_pindah;
-
         $surat->bidang_usaha = $request->bidang_usaha;
         $surat->alamat_usaha = $request->alamat_usaha;
-
         $surat->surat_path = 'pdf/surat/' . $namePDF . '.pdf';
         $surat->save();
 
