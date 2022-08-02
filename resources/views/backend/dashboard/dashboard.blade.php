@@ -233,49 +233,49 @@
                     ],
                     datasets: [{
                             label: 'SKKM',
-                            data: {{ json_encode($surat['SKKM']) }},
+                            data: {!! json_encode($surat['SKKM']) !!},
                             fill: true,
                             borderWidth: 1,
                             borderColor: 'red'
                         },
                         {
                             label: 'SKBM',
-                            data: {{ json_encode($surat['SKBM']) }},
+                            data: {!! json_encode($surat['SKBM']) !!},
                             fill: true,
                             borderWidth: 1,
                             borderColor: 'green'
                         },
                         {
                             label: 'SKBB',
-                            data: {{ json_encode($surat['SKBB']) }},
+                            data: {!! json_encode($surat['SKBB']) !!},
                             fill: true,
                             borderWidth: 1,
                             borderColor: 'blue'
                         },
                         {
                             label: 'SKP',
-                            data: {{ json_encode($surat['SKP']) }},
+                            data: {!! json_encode($surat['SKP']) !!},
                             fill: true,
                             borderWidth: 1,
                             borderColor: 'yellow'
                         },
                         {
                             label: 'SKU',
-                            data: {{ json_encode($surat['SKU']) }},
+                            data: {!! json_encode($surat['SKU']) !!},
                             fill: true,
                             borderWidth: 1,
                             borderColor: 'black'
                         },
                         {
                             label: 'SKD',
-                            data: {{ json_encode($surat['SKD']) }},
+                            data: {!! json_encode($surat['SKD']) !!},
                             fill: true,
                             borderWidth: 1,
                             borderColor: 'brown'
                         },
                         {
                             label: 'SKK',
-                            data: {{ json_encode($surat['SKK']) }},
+                            data: {!! json_encode($surat['SKK']) !!},
                             fill: true,
                             borderWidth: 1,
                             borderColor: 'silver'
@@ -306,14 +306,14 @@
                     ],
                     datasets: [{
                             label: 'Kelahiran',
-                            data: {{ json_encode($cKelahiran) }},
+                            data: {!! json_encode($cKelahiran) !!},
                             fill: false,
                             borderWidth: 1,
                             borderColor: '#393F5F'
                         },
                         {
                             label: 'Kematian',
-                            data: {{ json_encode($cKematian) }},
+                            data: {!! json_encode($cKematian) !!},
                             fill: false,
                             borderWidth: 1,
                             borderColor: '#E86D5E'
@@ -343,14 +343,14 @@
                     ],
                     datasets: [{
                             label: 'Perpindahan',
-                            data: {{ json_encode($cPindah) }},
+                            data: {!! json_encode($cPindah) !!},
                             fill: false,
                             borderWidth: 1,
                             borderColor: '#0D7377'
                         },
                         {
                             label: 'Kedatangan',
-                            data: {{ json_encode($cDatang) }},
+                            data: {!! json_encode($cDatang) !!},
                             fill: false,
                             borderWidth: 1,
                             borderColor: '#E19A1C'

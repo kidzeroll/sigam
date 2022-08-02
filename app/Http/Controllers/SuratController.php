@@ -62,7 +62,7 @@ class SuratController extends Controller
         $noSurat = Surat::where('jenis_surat', '=', $request->jenis_surat)->count();
 
         $surat = new Surat();
-        $namePDF = Str::random(20);
+        $namePDF = Str::random(10);
 
         if (auth()->user()->role == 'admin') {
             $surat->status = 'ditandatangani';
@@ -208,7 +208,7 @@ class SuratController extends Controller
         $noSurat = Surat::where('jenis_surat', '=', $request->jenis_surat)->count();
 
         $surat = new Surat();
-        $namePDF = Str::random(20);
+        $namePDF = Str::random(10);
 
         $surat->no_surat = $noSurat;
         $surat->pekerjaan_id = $request->pekerjaan_id;
