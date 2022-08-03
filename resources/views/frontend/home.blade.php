@@ -6,7 +6,7 @@
     </x-slot>
 
 
-    @if ($artikel->isNotEmpty())
+    @if ($artikel->count() >= 3)
         <section id="berita" data-aos="fade-up" date-aos-delay="200">
             <div class="container">
 
@@ -39,7 +39,7 @@
 
                             <div class="entry-content">
                                 <p style="text-align: justify">
-                                    {{ Str::limit($artikel[0]->isi, 200, '...') }}
+                                    {!! strip_tags(Str::limit($artikel[0]->isi, 600, '...')) !!}
                                 </p>
                             </div>
 
@@ -72,7 +72,7 @@
 
                             <div class="entry-content">
                                 <p style="text-align: justify">
-                                    {{ Str::limit($artikel[1]->isi, 200, '...') }}
+                                    {!! strip_tags(Str::limit($artikel[1]->isi, 600, '...')) !!}
                                 </p>
                             </div>
 
@@ -105,7 +105,7 @@
 
                             <div class="entry-content">
                                 <p style="text-align: justify">
-                                    {{ Str::limit($artikel[2]->isi, 200, '...') }}
+                                    {!! strip_tags(Str::limit($artikel[2]->isi, 600, '...')) !!}
                                 </p>
                             </div>
 

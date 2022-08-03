@@ -29,6 +29,12 @@ class SuratController extends Controller
         return view('backend.surat.form', compact('model', 'agamas', 'pekerjaans'));
     }
 
+    public function show($id)
+    {
+        $model = Surat::findOrFail($id);
+        return view('backend.surat.show', compact('model'));
+    }
+
     public function store(Request $request)
     {
         $request->validate([
@@ -59,7 +65,7 @@ class SuratController extends Controller
         $noSurat = Surat::where('jenis_surat', '=', $request->jenis_surat)->count();
 
         $surat = new Surat();
-        $namePDF = Str::random(10);
+        $namePDF = Str::random(16);
 
         if (auth()->user()->role == 'admin') {
             $surat->status = 'ditandatangani';
@@ -109,6 +115,14 @@ class SuratController extends Controller
 
         if ($surat->surat_path && file_exists(storage_path('app/public/' . $surat->surat_path))) {
             Storage::delete('public/' . $surat->surat_path);
+        }
+
+        if ($surat->ktp_path && file_exists(storage_path('app/public/' . $surat->ktp_path))) {
+            Storage::delete('public/' . $surat->ktp_path);
+        }
+
+        if ($surat->kk_path && file_exists(storage_path('app/public/' . $surat->kk_path))) {
+            Storage::delete('public/' . $surat->kk_path);
         }
 
         Surat::destroy($id);
@@ -171,6 +185,9 @@ class SuratController extends Controller
             'alamat' => 'required',
             'keperluan' => 'required',
             'no_hp' => 'required',
+
+            'ktp_path' => 'required|mimes:pdf|max:2048',
+            'kk_path' => 'required|mimes:pdf|max:2048',
         ]);
 
         if ($request->jenis_surat == 'SKP') {
@@ -201,7 +218,31 @@ class SuratController extends Controller
         $noSurat = Surat::where('jenis_surat', '=', $request->jenis_surat)->count();
 
         $surat = new Surat();
-        $namePDF = Str::random(10);
+        $namePDF = Str::random(16);
+
+        if ($request->file('ktp_path')) {
+            if (
+                $surat->ktp_path && file_exists(storage_path('app/public/' . $surat->ktp_path))
+            ) {
+                Storage::delete('public/' . $surat->ktp_path);
+            }
+
+            $ktp_path_store = $request->file('ktp_path')->store('pdf/ktp', 'public');
+
+            $surat->ktp_path = $ktp_path_store;
+        }
+
+        if ($request->file('kk_path')) {
+            if (
+                $surat->kk_path && file_exists(storage_path('app/public/' . $surat->kk_path))
+            ) {
+                Storage::delete('public/' . $surat->kk_path);
+            }
+
+            $kk_path_store = $request->file('kk_path')->store('pdf/kk', 'public');
+
+            $surat->kk_path = $kk_path_store;
+        }
 
         $surat->no_surat = $noSurat;
         $surat->pekerjaan_id = $request->pekerjaan_id;

@@ -32,6 +32,7 @@
                                     </a>
                                 </li>
                             </ul>
+                            <span><small>{{ $artikel->kategori->nama }}</small></span>
                         </div>
 
                         <div class="entry-content">
@@ -50,13 +51,13 @@
                 </div>
 
                 <!--sidebar-->
-                <div class="col-lg-4">
+                <div class="col-md-4 col-12">
 
                     <div class="sidebar">
                         <h3 class="sidebar-title">Cari Berita</h3>
                         <div class="sidebar-item search-form">
-                            <form action="">
-                                <input type="text">
+                            <form action="{{ route('berita') }}">
+                                <input type="text" name="search" id="search">
                                 <button type="submit"><i class="bi bi-search"></i></button>
                             </form>
                         </div>
@@ -66,7 +67,8 @@
                         <div class="">
                             <ul>
                                 @foreach ($kategoris as $kategori)
-                                    <li><a href="#">{{ $kategori->nama }}</a></li>
+                                    <li><a href="{{ route('kategori', $kategori->slug) }}">{{ $kategori->nama }}</a>
+                                    </li>
                                 @endforeach
                             </ul>
                         </div>

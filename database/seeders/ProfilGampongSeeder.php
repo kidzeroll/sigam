@@ -23,7 +23,7 @@ class ProfilGampongSeeder extends Seeder
         $gampong->alamat_keuchik = "alamat_keuchik";
         $gampong->twitter = "twitter";
         $gampong->facebook = "facebook";
-        $gampong->whatsapp = "whatsapp";
+        $gampong->whatsapp = "https://api.whatsapp.com/send?phone=6282362568088";
         $gampong->instagram = "instagram";
         $gampong->logo_path = 'images/logo/Logo.png';
         $gampong->ttd_path = 'images/logo/ttd.png';

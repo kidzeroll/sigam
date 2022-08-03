@@ -42,6 +42,10 @@ return new class extends Migration
             $table->text('alamat_usaha')->nullable();
             $table->timestamps();
 
+            // untuk upload ktp dan kk
+            $table->string('ktp_path')->nullable();
+            $table->string('kk_path')->nullable();
+
             $table->foreign('pekerjaan_id')->references('id')->on('tb_pekerjaan')->onUpdate('cascade')->onDelete('cascade');
             $table->foreign('agama_id')->references('id')->on('tb_agama')->onUpdate('cascade')->onDelete('cascade');
         });

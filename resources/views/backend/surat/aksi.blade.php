@@ -12,9 +12,10 @@
     </button>
 @endif
 
-<a href="{{ asset('storage/' . $model->surat_path) }}" class="btn btn-sm btn-warning btn-show" target="_blank">
+<button type="button" class="btn btn-sm btn-warning btn-show" url="{{ $url_show }}" data-toggle="modal"
+    data-target="#modal" title="Detail">
     <i class="fas fa-eye"></i>
-</a>
+</button>
 
 @can('isAdmin')
     <button type="button" class="btn btn-sm btn-danger btn-delete" url="{{ $url_destroy }}" title="Hapus">

@@ -30,7 +30,8 @@
                 </li>
 
                 <!--pengaduan-->
-                <li><a href="{{ route('pengaduan.create') }}">Pengaduan</a></li>
+                <li><a class="{{ request()->is('pengaduan/create*') ? 'active' : '' }}"
+                        href="{{ route('pengaduan.create') }}">Pengaduan</a></li>
 
                 <!--administrasi surat-->
                 <li class="dropdown">

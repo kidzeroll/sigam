@@ -106,6 +106,25 @@
                     });
                 });
 
+                // show detail modal
+                $('body').on('click', '.btn-show', function() {
+
+                    var me = $(this),
+                        url = me.attr('url'),
+                        title = me.attr('title');
+
+                    $('#modal-title').text(title + ' Administrasi Surat');
+                    $('#modal-btn-save').addClass('invisible');
+
+                    $.ajax({
+                        url: url,
+                        dataType: 'html',
+                        success: function(response) {
+                            $('#modal-body').html(response);
+                        }
+                    });
+                });
+
                 // store or update
                 $('#modal-btn-save').click(function(event) {
                     var table = $('#surat-table'),

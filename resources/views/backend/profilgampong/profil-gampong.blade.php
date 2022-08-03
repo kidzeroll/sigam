@@ -239,6 +239,8 @@
                                 <label for="twitter">Twitter</label>
                                 <input type="text" class="form-control  @error('twitter') is-invalid @enderror"
                                     id="twitter" name="twitter" value="{{ old('twitter', $gampong->twitter) }}">
+                                <span><small>Paste Link Twitter Gampong disini</small></span>
+
                                 @error('twitter')
                                     <div class="invalid-feedback">
                                         {{ $message }}
@@ -252,6 +254,8 @@
                                 <input type="text" class="form-control  @error('instagram') is-invalid @enderror"
                                     id="instagram" name="instagram"
                                     value="{{ old('instagram', $gampong->instagram) }}">
+                                <span><small>Paste Link Instagram Gampong disini</small></span>
+
                                 @error('instagram')
                                     <div class="invalid-feedback">
                                         {{ $message }}
@@ -269,6 +273,8 @@
                                 <input type="text" class="form-control  @error('facebook') is-invalid @enderror"
                                     id="facebook" name="facebook"
                                     value="{{ old('facebook', $gampong->facebook) }}">
+                                <span><small>Paste Link Facebook Gampong disini</small></span>
+
                                 @error('facebook')
                                     <div class="invalid-feedback">
                                         {{ $message }}
@@ -282,6 +288,7 @@
                                 <input type="text" class="form-control  @error('whatsapp') is-invalid @enderror"
                                     id="whatsapp" name="whatsapp"
                                     value="{{ old('whatsapp', $gampong->whatsapp) }}">
+                                <span><small>Paste Link Whatsapp Gampong disini</small></span>
                                 @error('whatsapp')
                                     <div class="invalid-feedback">
                                         {{ $message }}

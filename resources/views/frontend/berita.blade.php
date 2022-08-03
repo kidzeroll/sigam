@@ -56,8 +56,8 @@
                             </div>
 
                             <div class="entry-content">
-                                <p style="text-align: justify">
-                                    {{ Str::limit($artikel->isi, 200, '...') }}
+                                <p>
+                                    {!! strip_tags(Str::limit($artikel->isi, 600, '...')) !!}
                                 </p>
                                 <div class="read-more">
                                     <a href="{{ route('berita.show', ['slug' => $artikel->slug]) }}">Read More</a>

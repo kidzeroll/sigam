@@ -136,6 +136,7 @@ Route::middleware(['auth'])->group(function () {
     // surat
     Route::get('/surat', [SuratController::class, 'index'])->name('surat.index');
     Route::get('/surat/create', [SuratController::class, 'create'])->name('surat.create');
+    Route::get('/surat/{surat}', [SuratController::class, 'show'])->name('surat.show');
     Route::post('/surat', [SuratController::class, 'store'])->name('surat.store');
     Route::delete('/surat/{surat}', [SuratController::class, 'destroy'])->name('surat.destroy');
     Route::post('/surat/{surat}', [SuratController::class, 'tandatangan'])->name('surat.ttd');

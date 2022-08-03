@@ -244,7 +244,42 @@
     </div>
 </div>
 
+<div class="row">
+    <!-- ktp_path -->
+    <div class="form-group col-md-6 col-12">
+        <label>Scan KTP</label>
+        <div class="custom-file">
+            <input type="file" class="custom-file-input" id="ktp_path" name="ktp_path">
+            <label class="custom-file-label" for="ktp_path" id="label-ktp_path">Choose
+                file</label>
+        </div>
+    </div>
+
+    <!-- kk_path -->
+    <div class="form-group col-md-6 col-12">
+        <label>Scan KK</label>
+        <div class="custom-file">
+            <input type="file" class="custom-file-input" id="kk_path" name="kk_path">
+            <label class="custom-file-label" for="kk_path" id="label-kk_path">Choose
+                file</label>
+        </div>
+    </div>
+</div>
+
 {!! Form::close() !!}
+
+
+<script type="text/javascript">
+    document.querySelector("#ktp_path").onchange = function() {
+        document.querySelector("#label-ktp_path").textContent = this.files[0].name;
+    }
+</script>
+
+<script type="text/javascript">
+    document.querySelector("#kk_path").onchange = function() {
+        document.querySelector("#label-kk_path").textContent = this.files[0].name;
+    }
+</script>
 
 <script>
     $('#jenis_surat').change(function() {

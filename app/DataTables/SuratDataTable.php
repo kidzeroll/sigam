@@ -22,6 +22,7 @@ class SuratDataTable extends DataTable
             ->addColumn('action', function ($model) {
                 return view('backend.surat.aksi', [
                     'model' => $model,
+                    'url_show' => route('surat.show', $model->id),
                     'url_destroy' => route('surat.destroy', $model->id),
                     'url_ttd' => route('surat.ttd', $model->id),
                     'url_wa' => route('surat.wa', $model->id),

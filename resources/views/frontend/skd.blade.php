@@ -8,7 +8,7 @@
                     <h5>Surat Keterangan Domisili</h5>
                 </div>
                 <div class="card-body">
-                    <form action="{{ route('administrasi.store') }}" method="POST">
+                    <form action="{{ route('administrasi.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
 
                         <div class="row">
@@ -184,6 +184,33 @@
                                     </div>
                                 @enderror
                             </div>
+                        </div>
+
+                        <div class="row">
+                            <!-- ktp_path -->
+                            <div class="form-group col-md-6 col-12 mt-3">
+                                <label><span class="text-danger"><sup>*</sup></span>Scan KTP (PDF)</label>
+                                <input class="form-control @error('ktp_path') is-invalid @enderror" type="file"
+                                    name="ktp_path" id="ktp_path">
+                                @error('ktp_path')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+
+                            <!-- kk_path -->
+                            <div class="form-group col-md-6 col-12 mt-3">
+                                <label><span class="text-danger"><sup>*</sup></span>Scan KK (PDF)</label>
+                                <input class="form-control @error('kk_path') is-invalid @enderror" type="file"
+                                    name="kk_path" id="kk_path">
+                                @error('kk_path')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+
                         </div>
 
                         <div class="form-group mt-3">
