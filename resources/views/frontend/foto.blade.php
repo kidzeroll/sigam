@@ -45,22 +45,27 @@
                 </div>
 
                 <!--sidebar-->
+
                 <div class="col-md-2 col-12">
                     <div class="row" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-duration="500">
-
-                        <div class="sidebar shadow p-3">
-                            <h5 class="text-center">Tahun Upload</h5>
-                            <ul>
-                                @foreach ($archives as $stats)
-                                    <li>
-                                        <a href="{{ route('foto') }}/?tahun={{ $stats['tahun'] }}">{{ $stats['tahun'] }}
-                                        </a>
-                                        <span>
-                                            ({{ $stats['total'] }})
-                                        </span>
-                                    </li>
-                                @endforeach
-                            </ul>
+                        <div class="card shadow">
+                            <div class="card-header bg-white">
+                                <h5>Tahun Upload</h4>
+                            </div>
+                            <div class="card-body">
+                                <ul>
+                                    @foreach ($archives as $stats)
+                                        <li>
+                                            <a href="{{ route('foto') }}/?tahun={{ $stats['tahun'] }}">
+                                                {{ $stats['tahun'] }}
+                                            </a>
+                                            <span>
+                                                ({{ $stats['total'] }})
+                                            </span>
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
