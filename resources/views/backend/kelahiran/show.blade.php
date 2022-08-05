@@ -29,18 +29,6 @@
     </tr>
 
     <tr>
-        <td>Status</td>
-        <td>:
-            @if ($model->status == 'lahir')
-                <span class="badge badge-primary">{{ $model->status }}</span>
-            @endif
-            @if ($model->status == 'meninggal')
-                <span class="badge badge-danger">{{ $model->status }}</span>
-            @endif
-        </td>
-    </tr>
-
-    <tr>
         <td>Keterangan</td>
         <td>: {{ $model->keterangan }}</td>
     </tr>
