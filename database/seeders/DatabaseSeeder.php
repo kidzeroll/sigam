@@ -24,14 +24,14 @@ class DatabaseSeeder extends Seeder
             KategoriSeeder::class,
             ArtikelSeeder::class,
 
-            // SuratMasukSeeder::class,
-            // SuratKeluarSeeder::class,
-            // PendatangSeeder::class,
-            // KelahiranSeeder::class,
-            // KematianSeeder::class,
-            // PerpindahanSeeder::class,
-            // PengaduanSeeder::class,
-            // SuratSeeder::class,
+            SuratMasukSeeder::class,
+            SuratKeluarSeeder::class,
+            PendatangSeeder::class,
+            KelahiranSeeder::class,
+            KematianSeeder::class,
+            PerpindahanSeeder::class,
+            PengaduanSeeder::class,
+            SuratSeeder::class,
         ]);
     }
 }

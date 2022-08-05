@@ -13,7 +13,7 @@ class KematianSeeder extends Seeder
     {
         $faker = \Faker\Factory::create();
 
-        for ($i = 21; $i <= 40; $i++) {
+        for ($i = 21; $i <= 50; $i++) {
 
             Kematian::create([
                 'penduduk_id' => $i,

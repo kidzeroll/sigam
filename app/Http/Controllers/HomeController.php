@@ -48,6 +48,7 @@ class HomeController extends Controller
     {
         $archives = Galeri::selectRaw('year(created_at) tahun, count(*) total')
             ->groupBy('tahun')
+            ->orderBy('tahun', 'DESC')
             ->get()
             ->toArray();
 

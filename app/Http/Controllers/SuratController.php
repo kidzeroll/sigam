@@ -186,34 +186,22 @@ class SuratController extends Controller
             'keperluan' => 'required',
             'no_hp' => 'required',
 
+            'tujuan_pindah' => 'required_if:jenis_surat,=,SKP',
+            'tanggal_pindah' => 'required_if:jenis_surat,=,SKP',
+
+            'bidang_usaha' => 'required_if:jenis_surat,=,SKU',
+            'alamat_usaha' => 'required_if:jenis_surat,=,SKU',
+
+            'tanggal_meninggal' => 'required_if:jenis_surat,=,SKK',
+            'tanggal_dikebumikan' => 'required_if:jenis_surat,=,SKK',
+            'tempat_dikebumikan' => 'required_if:jenis_surat,=,SKK',
+            'pukul_meninggal' => 'required_if:jenis_surat,=,SKK',
+            'pukul_dikebumikan' => 'required_if:jenis_surat,=,SKK',
+            'penyebab' => 'required_if:jenis_surat,=,SKK',
+
             'ktp_path' => 'required|mimes:pdf|max:2048',
             'kk_path' => 'required|mimes:pdf|max:2048',
         ]);
-
-        if ($request->jenis_surat == 'SKP') {
-            $request->validate([
-                'tujuan_pindah' => 'required',
-                'tanggal_pindah' => 'required',
-            ]);
-        }
-
-        if ($request->jenis_surat == 'SKU') {
-            $request->validate([
-                'bidang_usaha' => 'required',
-                'alamat_usaha' => 'required',
-            ]);
-        }
-
-        if ($request->jenis_surat == 'SKK') {
-            $request->validate([
-                'tanggal_meninggal' => 'required',
-                'tanggal_dikebumikan' => 'required',
-                'tempat_dikebumikan' => 'required',
-                'pukul_meninggal' => 'required',
-                'pukul_dikebumikan' => 'required',
-                'penyebab' => 'required',
-            ]);
-        }
 
         $noSurat = Surat::where('jenis_surat', '=', $request->jenis_surat)->count();
 
