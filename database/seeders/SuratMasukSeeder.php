@@ -22,6 +22,7 @@ class SuratMasukSeeder extends Seeder
                 'tembusan' => 'keuchik',
                 'pengirim' => 'sekda aceh',
                 'keterangan' => 'sangat penting!',
+                'lampiran_path' => 'pdf/surat-masuk/surat' . $i . '.pdf',
             ]);
         }
     }

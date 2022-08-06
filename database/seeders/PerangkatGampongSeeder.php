@@ -24,6 +24,7 @@ class PerangkatGampongSeeder extends Seeder
                 'jabatan' => $jabatan[$i],
                 'no_hp' => $faker->phoneNumber(),
                 'alamat' => $faker->address(),
+                'photo_path' => 'images/user/perangkat' . $i + 1 . '.jpg',
             ]);
         }
     }

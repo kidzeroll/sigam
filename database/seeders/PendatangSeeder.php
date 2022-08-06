@@ -12,7 +12,7 @@ class PendatangSeeder extends Seeder
     {
         $faker = \Faker\Factory::create();
 
-        for ($i = 1; $i <= 50; $i++) {
+        for ($i = 1; $i <= 30; $i++) {
             Pendatang::create([
                 'no_kk' => $faker->numerify('################'),
                 'nik' => $faker->numerify('################'),

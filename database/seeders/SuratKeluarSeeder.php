@@ -13,7 +13,7 @@ class SuratKeluarSeeder extends Seeder
     {
         $faker = \Faker\Factory::create();
 
-        for ($i = 1; $i <= 10; $i++) {
+        for ($i = 1; $i <= 5; $i++) {
             SuratKeluar::create([
                 'no_surat' => '00' . $i . '/GJM/IV/2022',
                 'no_agenda' => '00' . $i,
@@ -22,6 +22,7 @@ class SuratKeluarSeeder extends Seeder
                 'tembusan' => 'keuchik',
                 'penerima' => 'sekda aceh',
                 'keterangan' => 'sangat penting!',
+                'lampiran_path' => 'pdf/surat-keluar/surat' . $i . '.pdf',
             ]);
         }
     }
