@@ -30,16 +30,7 @@ class KelahiranDataTable extends DataTable
             ->editColumn('tanggal_lahir', function ($model) {
                 return $model->tanggal_lahir->format('d-m-Y');
             })
-            ->editColumn('status', function ($model) {
-                if ($model->status == 'lahir') {
-                    return '<span class="badge badge-primary">' . $model->status . '</span>';
-                }
-
-                if ($model->status == 'meninggal') {
-                    return '<span class="badge badge-danger">' . $model->status . '</span>';
-                }
-            })
-            ->rawColumns(['action', 'tanggal_lahir', 'status'])
+            ->rawColumns(['action', 'tanggal_lahir'])
             ->setRowId('id');
     }
 
@@ -70,7 +61,6 @@ class KelahiranDataTable extends DataTable
             Column::make('jenis_kelamin')->title('JK')->addClass('text-center')->searchable(false)->orderable(false),
             Column::make('tempat_lahir')->title('Tpt Lahir')->addClass('text-left')->searchable(true)->orderable(true),
             Column::make('tanggal_lahir')->title('Tgl Lahir')->addClass('text-center')->searchable(true)->orderable(true),
-            Column::make('status')->title('Status')->addClass('text-center')->searchable(false)->orderable(false),
             Column::computed('action')
                 ->title('<i class="fas fa-cog"></i>')
                 ->exportable(false)
