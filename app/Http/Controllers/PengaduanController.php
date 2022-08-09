@@ -45,6 +45,17 @@ class PengaduanController extends Controller
         $pengaduan->no_hp = $request->no_hp;
         $pengaduan->save();
 
+        // wa
+        // $key = 'test-arifapp-1234567890';
+        // $phone = $request->no_hp;
+        // $name = $request->nama;
+
+        // $message =
+        //     "Halo " . $name . "\n\nPengaduan anda telah masuk kedalam sistem kami. Segera akan kami tanggapi.\n\n\nSIGAM TEAM";
+
+        // $response = Http::post('https://api.arif.app/api/send', ['key' => $key, 'no' => $phone, 'pesan' => $message]);
+        // return $response->json(['success' => 'Pengaduan Berhasil Diajukan']);
+
         return redirect()->back()->with('success', 'Pengaduan Berhasil Diajukan');
     }
 
@@ -91,7 +102,7 @@ class PengaduanController extends Controller
 
         $message =
             "Halo " . $name . "\nPengaduan anda : " . $judul . " \nIsi Pengaduan : " . $isi . "
-            \n\nTelah kami tanggapi. Terimakasih sudah melapor kepada kami.\n\n\nSIGAM TEAM";
+            \n\nTelah kami proses. Terimakasih sudah melapor kepada kami.\n\n\nSIGAM TEAM";
 
         $response = Http::post('https://api.arif.app/api/send', ['key' => $key, 'no' => $phone, 'pesan' => $message]);
         return $response->successful();

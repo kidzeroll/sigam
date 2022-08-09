@@ -20,9 +20,23 @@ class DashboardController extends Controller
 {
     public function __invoke(Request $request)
     {
-        $penduduk = Penduduk::count();
-        $cowo = Penduduk::where('jenis_kelamin', '=', 'L')->count();
-        $cewe = Penduduk::where('jenis_kelamin', '=', 'P')->count();
+        $penduduk = Penduduk::where('status', 'ada')->count() +
+            Pendatang::where('status', 'menetap')->count();
+
+        $cowo = Penduduk::where('jenis_kelamin', 'L')
+            ->where('status', 'ada')
+            ->count() +
+            Pendatang::where('jenis_kelamin', 'L')
+            ->where('status', 'menetap')
+            ->count();
+
+        $cewe = Penduduk::where('jenis_kelamin', 'P')
+            ->where('status', 'ada')
+            ->count() +
+            Pendatang::where('jenis_kelamin', 'P')
+            ->where('status', 'menetap')
+            ->count();
+
         $artikel = Artikel::count();
         $user = User::count();
         $foto = Galeri::count();

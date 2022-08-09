@@ -49,20 +49,26 @@ class SuratController extends Controller
             'alamat' => 'required',
             'keperluan' => 'required',
             'no_hp' => 'required',
-            'status' => 'nullable',
-            'tanggal_meninggal' => 'nullable',
-            'tanggal_dikebumikan' => 'nullable',
-            'tempat_dikebumikan' => 'nullable',
-            'pukul_meninggal' => 'nullable',
-            'pukul_dikebumikan' => 'nullable',
-            'penyebab' => 'nullable',
-            'tujuan_pindah' => 'nullable',
-            'tanggal_pindah' => 'nullable',
-            'bidang_usaha' => 'nullable',
-            'alamat_usaha' => 'nullable',
+            'tujuan_pindah' => 'required_if:jenis_surat,=,SKP',
+            'tanggal_pindah' => 'required_if:jenis_surat,=,SKP',
+
+            'bidang_usaha' => 'required_if:jenis_surat,=,SKU',
+            'alamat_usaha' => 'required_if:jenis_surat,=,SKU',
+
+            'tanggal_meninggal' => 'required_if:jenis_surat,=,SKK',
+            'tanggal_dikebumikan' => 'required_if:jenis_surat,=,SKK',
+            'tempat_dikebumikan' => 'required_if:jenis_surat,=,SKK',
+            'pukul_meninggal' => 'required_if:jenis_surat,=,SKK',
+            'pukul_dikebumikan' => 'required_if:jenis_surat,=,SKK',
+            'penyebab' => 'required_if:jenis_surat,=,SKK',
+
+            'ktp_path' => 'required|mimes:pdf|max:2048',
+            'kk_path' => 'required|mimes:pdf|max:2048',
         ]);
 
-        $noSurat = Surat::where('jenis_surat', '=', $request->jenis_surat)->count();
+        $noSurat = Surat::whereYear('created_at', date('Y'))
+            ->where('jenis_surat', '=', $request->jenis_surat)
+            ->count();
 
         $surat = new Surat();
         $namePDF = Str::random(16);
@@ -203,7 +209,9 @@ class SuratController extends Controller
             'kk_path' => 'required|mimes:pdf|max:2048',
         ]);
 
-        $noSurat = Surat::where('jenis_surat', '=', $request->jenis_surat)->count();
+        $noSurat = Surat::whereYear('created_at', date('Y'))
+            ->where('jenis_surat', '=', $request->jenis_surat)
+            ->count();
 
         $surat = new Surat();
         $namePDF = Str::random(16);
@@ -261,7 +269,6 @@ class SuratController extends Controller
         $surat->surat_path = 'pdf/surat/' . $namePDF . '.pdf';
         $surat->save();
 
-
         $data = Surat::where('id', '=', $surat->id)->first();
         $no = sprintf('%03s', abs($data->no_surat + 1));
 
@@ -273,4 +280,15 @@ class SuratController extends Controller
 
         return redirect()->back()->with('success', 'Terimakasih, permintaan anda akan segera kami proses');
     }
+
+    // wa
+    // $key = 'test-arifapp-1234567890';
+    // $phone = $data->no_hp;
+    // $name = $data->nama;
+
+    // $message =
+    //     "Halo " . $name . "\n\nPengaduan anda telah masuk kedalam sistem kami. Segera akan kami tanggapi.\n\n\nSIGAM TEAM";
+
+    // $response = Http::post('https://api.arif.app/api/send', ['key' => $key, 'no' => $phone, 'pesan' => $message]);
+    // return $response->successful();
 }
