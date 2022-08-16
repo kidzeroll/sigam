@@ -77,6 +77,30 @@ class SuratController extends Controller
             $surat->status = 'ditandatangani';
         }
 
+        if ($request->file('ktp_path')) {
+            if (
+                $surat->ktp_path && file_exists(storage_path('app/public/' . $surat->ktp_path))
+            ) {
+                Storage::delete('public/' . $surat->ktp_path);
+            }
+
+            $ktp_path_store = $request->file('ktp_path')->store('pdf/ktp', 'public');
+
+            $surat->ktp_path = $ktp_path_store;
+        }
+
+        if ($request->file('kk_path')) {
+            if (
+                $surat->kk_path && file_exists(storage_path('app/public/' . $surat->kk_path))
+            ) {
+                Storage::delete('public/' . $surat->kk_path);
+            }
+
+            $kk_path_store = $request->file('kk_path')->store('pdf/kk', 'public');
+
+            $surat->kk_path = $kk_path_store;
+        }
+
         $surat->no_surat = $noSurat;
         $surat->pekerjaan_id = $request->pekerjaan_id;
         $surat->agama_id = $request->agama_id;

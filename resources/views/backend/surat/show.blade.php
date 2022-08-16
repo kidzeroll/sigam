@@ -1,5 +1,4 @@
 <table cellpadding="10">
-
     <tr>
         <td>Jenis Surat</td>
         <td>: {{ $model->jenis_surat }}</td>
@@ -57,12 +56,24 @@
 
     <tr>
         <td>Scan KTP</td>
-        <td>: <a href="{{ asset('storage/' . $model->ktp_path) }}" target="_blank">KTP {{ $model->nama }}</a></td>
+        <td>:
+            @if ($model->ktp_path)
+                <a href="{{ asset('storage/' . $model->ktp_path) }}" target="_blank">KTP {{ $model->nama }}</a>
+            @else
+                -
+            @endif
+        </td>
     </tr>
 
     <tr>
         <td>Scan KK</td>
-        <td>: <a href="{{ asset('storage/' . $model->kk_path) }}" target="_blank">KK {{ $model->nama }}</a></td>
+        <td>:
+            @if ($model->kk_path)
+                <a href="{{ asset('storage/' . $model->kk_path) }}" target="_blank">KK {{ $model->nama }}</a>
+            @else
+                -
+            @endif
+        </td>
     </tr>
 
     <tr>
@@ -82,7 +93,7 @@
                 <span class="badge badge-danger">{{ $model->status }}</span>
             @endif
             @if ($model->status == 'selesai')
-                <span class="badge badge-warning">{{ $model->status }}</span>
+                <span class="badge badge-success">{{ $model->status }}</span>
             @endif
         </td>
     </tr>

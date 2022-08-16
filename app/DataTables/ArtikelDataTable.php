@@ -31,10 +31,7 @@ class ArtikelDataTable extends DataTable
             ->addColumn('photo_path', function ($model) {
                 return '<img src="' . asset('storage/' . $model->photo_path) . '" width="90px" height="90px" align="center"/>';
             })
-            ->addColumn('isi', function ($model) {
-                return Str::limit($model->isi, 60, '...');
-            })
-            ->rawColumns(['action', 'photo_path', 'isi'])
+            ->rawColumns(['action', 'photo_path'])
             ->setRowId('id');
     }
 
@@ -63,7 +60,6 @@ class ArtikelDataTable extends DataTable
                 ->addClass('text-center col-1'),
             Column::make('judul')->title('Judul')->addClass('text-left')->searchable(true)->orderable(true),
             Column::make('kategori.nama')->title('Kategori')->addClass('text-left')->searchable(true)->orderable(true),
-            Column::make('isi')->title('Isi')->addClass('text-left')->searchable(true)->orderable(false),
             Column::make('photo_path')->title('Thumbnail')->addClass('text-center')->searchable(false)->orderable(false),
             Column::computed('action')
                 ->title('<i class="fas fa-cog"></i>')

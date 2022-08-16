@@ -18,7 +18,8 @@
 
                             <!-- nik -->
                             <div class="form-group col-md-6 col-12">
-                                <label for="nik"><span class="text-danger"><sup>*</sup></span>NIK</label>
+                                <label for="nik"><span class="text-danger"><sup>*</sup></span>NIK yang
+                                    meninggal</label>
                                 <input type="text" class="form-control  @error('nik') is-invalid @enderror"
                                     id="nik" name="nik" value="{{ old('nik') }}">
                                 @error('nik')
@@ -30,7 +31,8 @@
 
                             <!-- nama -->
                             <div class="form-group col-md-6 col-12">
-                                <label for="nama"><span class="text-danger"><sup>*</sup></span>Nama</label>
+                                <label for="nama"><span class="text-danger"><sup>*</sup></span>Nama yang
+                                    meninggal</label>
                                 <input type="text" class="form-control  @error('nama') is-invalid @enderror"
                                     id="nama" name="nama" value="{{ old('nama') }}">
                                 @error('nama')
@@ -159,7 +161,8 @@
                         <div class="row">
                             <!-- no hp -->
                             <div class="form-group col-12 mt-3">
-                                <label for="no_hp"><span class="text-danger"><sup>*</sup></span>No Whatsapp</label>
+                                <label for="no_hp"><span class="text-danger"><sup>*</sup></span>No Whatsapp yang
+                                    membuat</label>
                                 <input id="no_hp" type="text"
                                     class="form-control @error('no_hp') is-invalid @enderror" name="no_hp"
                                     value="{{ old('no_hp') }}">
@@ -291,7 +294,7 @@
                         <div class="row">
                             <!-- ktp_path -->
                             <div class="form-group col-md-6 col-12 mt-3">
-                                <label><span class="text-danger"><sup>*</sup></span>Scan KTP (PDF)</label>
+                                <label><span class="text-danger"><sup>*</sup></span>Scan KTP yang membuat (PDF)</label>
                                 <input class="form-control @error('ktp_path') is-invalid @enderror" type="file"
                                     name="ktp_path" id="ktp_path">
                                 @error('ktp_path')
@@ -303,7 +306,8 @@
 
                             <!-- kk_path -->
                             <div class="form-group col-md-6 col-12 mt-3">
-                                <label><span class="text-danger"><sup>*</sup></span>Scan KK (PDF)</label>
+                                <label><span class="text-danger"><sup>*</sup></span>Scan KK yang meninggal
+                                    (PDF)</label>
                                 <input class="form-control @error('kk_path') is-invalid @enderror" type="file"
                                     name="kk_path" id="kk_path">
                                 @error('kk_path')
