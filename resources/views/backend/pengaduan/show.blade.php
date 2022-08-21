@@ -52,3 +52,18 @@
         </td>
     </tr>
 </table>
+
+
+@if ($model->status == 'ditanggapi' || $model->status == 'selesai')
+    <button type="button" class="btn btn-sm btn-success btn-wa float-right mt-5 mx-1"
+        url="{{ route('pengaduan.beritahukan', $model->id) }}" title="Whatsapp">
+        <i class="fab fa-whatsapp"></i>
+        <span>Whatsapp</span>
+    </button>
+@else
+    <button type="button" class="btn btn-sm btn-primary tanggapi float-right mt-5 mx-1"
+        url="{{ route('pengaduan.tanggapi', $model->id) }}" title="Tanggapi">
+        <i class="fas fa-check"></i>
+        <span>Tanggapi</span>
+    </button>
+@endif

@@ -4,10 +4,13 @@ namespace App\Http\Controllers;
 
 use App\DataTables\PengaduanDataTable;
 use App\Models\Pengaduan;
+use App\Models\User;
+use App\Notifications\PengaduanNotification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Storage;
 use App\Traits\WablasTrait;
+use Illuminate\Support\Facades\Notification;
 
 class PengaduanController extends Controller
 {
@@ -45,6 +48,11 @@ class PengaduanController extends Controller
         $pengaduan->no_hp = $request->no_hp;
         $pengaduan->save();
 
+        $user = User::where('role', 'admin')
+            ->orWhere('role', 'petugas')->get();
+
+        Notification::send($user, new PengaduanNotification($pengaduan));
+
         // wa
         // $key = 'test-arifapp-1234567890';
         // $phone = $request->no_hp;
@@ -79,12 +87,14 @@ class PengaduanController extends Controller
 
     public function tanggapi($id)
     {
-        $pengaduan = Pengaduan::findOrFail($id);
+        $model = Pengaduan::findOrFail($id);
 
-        $pengaduan->status = 'ditanggapi';
-        $pengaduan->save();
+        $model->status = 'ditanggapi';
+        $model->save();
 
-        return response()->json(['status' => 'success', 'message' => 'Pengaduan berhasil ditanggapi',]);
+        return view('backend.pengaduan.show', compact('model'));
+
+        // return response()->json(['status' => 'success', 'message' => 'Pengaduan berhasil ditanggapi',]);
     }
 
     public function beritahukan($id)

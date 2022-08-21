@@ -77,7 +77,7 @@ class HomeController extends Controller
     public function profil()
     {
         $perangkats = PerangkatGampong::all('nama', 'photo_path', 'jabatan', 'alamat');
-        $total = Penduduk::count();
+        $total = Penduduk::where('status', 'ada')->count();
         $dusuns = Dusun::all('nama');
         return view('frontend.profil', compact('perangkats', 'total', 'dusuns'));
     }

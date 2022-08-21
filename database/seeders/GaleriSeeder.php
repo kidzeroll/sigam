@@ -10,10 +10,10 @@ class GaleriSeeder extends Seeder
 {
     public function run()
     {
-        for ($i = 1; $i <= 10; $i++) {
+        for ($i = 1; $i <= 19; $i++) {
             Galeri::create([
-                'deskripsi' => 'Jantho Makmur turnamen bola cup tahun 2022',
-                'photo_path' => 'images/galeri/bola' . $i . '.png',
+                'deskripsi' => '17 Agustus 2022',
+                'photo_path' => 'images/galeri/' . $i . '.jpg',
             ]);
         }
     }

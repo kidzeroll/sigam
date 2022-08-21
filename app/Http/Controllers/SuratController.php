@@ -6,12 +6,15 @@ use App\DataTables\SuratDataTable;
 use App\Models\Agama;
 use App\Models\Pekerjaan;
 use App\Models\Surat;
+use App\Models\User;
+use App\Notifications\SuratNotification;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use App\Traits\WablasTrait;
+use Illuminate\Support\Facades\Notification;
 
 class SuratController extends Controller
 {
@@ -162,10 +165,10 @@ class SuratController extends Controller
 
     public function tandatangan($id)
     {
-        $surat = Surat::findOrFail($id);
+        $model = Surat::findOrFail($id);
 
-        $surat->status = 'ditandatangani';
-        $surat->save();
+        $model->status = 'ditandatangani';
+        $model->save();
 
         $data = Surat::where('id', '=', $id)->first();
         $array_bln    = array(1 => "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XI", "XII");
@@ -173,14 +176,17 @@ class SuratController extends Controller
 
         $no = sprintf('%03s', abs($data->no_surat + 1));
 
-        if ($surat->surat_path && file_exists(storage_path('app/public/' . $surat->surat_path))) {
-            Storage::delete('public/' . $surat->surat_path);
+        if ($model->surat_path && file_exists(storage_path('app/public/' . $model->surat_path))) {
+            Storage::delete('public/' . $model->surat_path);
 
             $pdf = PDF::loadView('backend.surat.jenis-surat.' . Str::lower($data->jenis_surat), compact('data', 'bln', 'no'));
             Storage::put('public/' . $data->surat_path, $pdf->output());
         }
 
-        return response()->json(['status' => 'success', 'message' => 'Surat berhasil ditandatangan']);
+        return view('backend.surat.show', compact('model'));
+
+
+        // return response()->json(['status' => 'success', 'message' => 'Surat berhasil ditandatangan']);
     }
 
     public function whatsapp($id)
@@ -292,6 +298,11 @@ class SuratController extends Controller
 
         $surat->surat_path = 'pdf/surat/' . $namePDF . '.pdf';
         $surat->save();
+
+        $user = User::where('role', 'admin')
+            ->orWhere('role', 'petugas')->get();
+
+        Notification::send($user, new SuratNotification($surat));
 
         $data = Surat::where('id', '=', $surat->id)->first();
         $no = sprintf('%03s', abs($data->no_surat + 1));

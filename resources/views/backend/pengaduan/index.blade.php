@@ -30,9 +30,11 @@
                         url: url,
                         type: 'POST',
                         success: function(response) {
+                            $('#modal-body').html(response);
                             table.DataTable().ajax.reload();
                             iziToast.success({
-                                message: response.message,
+                                // message: response.message,
+                                message: "Pengaduan Berhasil ditanggapi",
                                 position: 'topRight'
                             });
                         }
@@ -77,6 +79,7 @@
 
                     $('#modal-title').text(title + ' Pengaduan');
                     $('#modal-btn-save').addClass('invisible');
+                    $('#modal-footer').remove();
 
                     $.ajax({
                         url: url,

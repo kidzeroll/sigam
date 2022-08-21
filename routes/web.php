@@ -142,6 +142,12 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/surat/{surat}', [SuratController::class, 'tandatangan'])->name('surat.ttd');
     Route::post('/surat/send-message/{surat}', [SuratController::class, 'whatsapp'])->name('surat.wa');
 
+    // notification
+    Route::get('/mark-read', function () {
+        auth()->user()->unreadNotifications->markAsRead();
+        return back();
+    })->name('mark-read');
+
 
     // prefix admin
     Route::prefix('admin')->middleware('can:isAdmin')->group(function () {

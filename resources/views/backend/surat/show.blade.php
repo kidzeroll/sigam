@@ -173,3 +173,17 @@
 
     </table>
 @endif
+
+@if ($model->status == 'ditandatangani' || $model->status == 'selesai')
+    <button type="button" class="btn btn-sm btn-success btn-wa float-right mt-5 mx-1"
+        url="{{ route('surat.wa', $model->id) }}" title="Whatsapp">
+        <i class="fab fa-whatsapp"></i>
+        <span>Whatsapp</span>
+    </button>
+@else
+    <button type="button" class="btn btn-sm btn-primary btn-ttd float-right mt-5 mx-1"
+        url="{{ route('surat.ttd', $model->id) }}" title="Tandatangan">
+        <i class="fas fa-check"></i>
+        <span>Tandatangan</span>
+    </button>
+@endif

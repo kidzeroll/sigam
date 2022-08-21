@@ -115,6 +115,7 @@
 
                     $('#modal-title').text(title + ' Administrasi Surat');
                     $('#modal-btn-save').addClass('invisible');
+                    $('#modal-footer').remove();
 
                     $.ajax({
                         url: url,
@@ -220,9 +221,11 @@
                         url: url,
                         type: 'POST',
                         success: function(response) {
+                            $('#modal-body').html(response);
                             table.DataTable().ajax.reload();
                             iziToast.success({
-                                message: response.message,
+                                // message: response.message,
+                                message: "Surat berhasil ditandatangan",
                                 position: 'topRight'
                             });
                         }
