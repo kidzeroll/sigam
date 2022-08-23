@@ -45,7 +45,7 @@ class PerangkatGampongSeeder extends Seeder
             'jabatan' => 'Ketua Pemuda',
             'no_hp' => '082362568088',
             'alamat' => 'Kota Jantho',
-            'photo_path' => 'images/user/1.jpg',
+            'photo_path' => 'images/user/2.jpg',
         ]);
     }
 }

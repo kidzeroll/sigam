@@ -40,5 +40,10 @@ class KategoriSeeder extends Seeder
             'nama' => 'Bantuan Gampong',
             'slug' => 'bantuan-gampong',
         ]);
+
+        Kategori::create([
+            'nama' => 'Campur',
+            'slug' => 'campur',
+        ]);
     }
 }
