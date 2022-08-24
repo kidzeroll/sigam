@@ -72,11 +72,6 @@
                                             style="width: 200px; height: 200px; overflow: hidden;">
                                         <h3>{{ $perangkat->nama }}</h3>
                                         <h4>{{ $perangkat->jabatan }}</h4>
-                                        <p>
-                                            <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                                            {{ $perangkat->alamat }}
-                                            <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                                        </p>
                                     </div>
                                 @endforeach
                             </div>
